@@ -1,0 +1,27 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <defs>
+    <linearGradient id="purple" x1="20" y1="15" x2="95" y2="105" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D8B4FE"/>
+      <stop offset=".5" stop-color="#9333EA"/>
+      <stop offset="1" stop-color="#5B21B6"/>
+    </linearGradient>
+    <linearGradient id="white" x1="35" y1="20" x2="90" y2="85" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#DDD6FE"/>
+    </linearGradient>
+    <filter id="shadow" x="0" y="0" width="120" height="120" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+  </defs>
+
+  <ellipse cx="60" cy="103" rx="34" ry="5" fill="#7C3AED" opacity=".3" filter="url(#shadow)"/>
+
+  <path d="M19 29C19 20.7 25.7 14 34 14H83C91.3 14 98 20.7 98 29V58C98 66.3 91.3 73 83 73H47L28 87V73C22.5 70.8 19 65.1 19 58V29Z" fill="url(#purple)"/>
+
+  <path d="M36 42C36 33.2 43.2 26 52 26H91C99.8 26 107 33.2 107 42V66C107 74.8 99.8 82 91 82H65L48 96V82C40.9 80.5 36 74.1 36 66V42Z" fill="url(#white)" stroke="#FFFFFF" stroke-opacity=".6" stroke-width="2"/>
+
+  <circle cx="58" cy="54" r="4.5" fill="#7C3AED"/>
+  <circle cx="72" cy="54" r="4.5" fill="#7C3AED"/>
+  <circle cx="86" cy="54" r="4.5" fill="#7C3AED"/>
+</svg>

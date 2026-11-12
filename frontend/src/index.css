@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+/* Main card entrance */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Left panel */
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-45px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Right panel */
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(45px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Illustration */
+@keyframes imageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Text */
+@keyframes textEnter {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Background decoration */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out both;
+}
+
+.animate-slide-left {
+  animation: slideLeft 0.9s ease-out 0.15s both;
+}
+
+.animate-slide-right {
+  animation: slideRight 0.9s ease-out 0.3s both;
+}
+
+.animate-image-enter {
+  animation: imageEnter 1s ease-out 0.5s both;
+}
+
+.animate-text-enter {
+  animation: textEnter 0.8s ease-out 0.65s both;
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 6s ease-in-out 1s infinite;
+}
+
+/* Respect accessibility preferences */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in,
+  .animate-slide-left,
+  .animate-slide-right,
+  .animate-image-enter,
+  .animate-text-enter,
+  .animate-float,
+  .animate-float-delayed {
+    animation: none;
+  }
+}
