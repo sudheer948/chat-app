@@ -31,7 +31,7 @@ authRouter.post("/signup", async (req, res) => {
 
     res.json({ message: "user added successfully!", data: savedUser });
   } catch (err) {
-    console.error(err);
+    console.error(err.message);
 
     if (err.code === 11000) {
       return res.status(409).json({
@@ -74,7 +74,7 @@ authRouter.post("/login", async (req, res) => {
     };
 
     if (!validator.isEmail(emailId)) {
-      throw createError("email is not valid!", 400);
+      throw createError("Invalid email or password.", 400);
     }
 
     const user = await User.findOne({ emailId });
