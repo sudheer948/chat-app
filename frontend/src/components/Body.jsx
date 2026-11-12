@@ -1,8 +1,35 @@
-
-import { Outlet, NavLink } from "react-router-dom";
+import { Outlet, NavLink, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { BASE_URL } from "../utils/constants";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addUser } from "../utils/userSlice";
 
 const Body = () => {
-  
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const userData = useSelector((store) => store.user);
+
+  const fetchUser = async () => {
+    try {
+      const res = await axios.get(BASE_URL + "/profile/view", {
+        withCredentials: true,
+      });
+      dispatch(addUser(res.data.user));
+    } catch (err) {
+      if (err.status === 401) {
+        navigate("/login");
+      }
+      console.log(err?.response);
+    }
+  };
+
+  useEffect(() => {
+    if (!userData) {
+      fetchUser();
+    }
+  }, []);
 
   // Temporary users (replace with API data later)
   const users = [
@@ -13,14 +40,10 @@ const Body = () => {
 
   return (
     <div className="flex h-screen bg-gray-100">
-
       {/* Left Sidebar */}
       <div className="w-80 bg-white border-r border-gray-200 flex flex-col">
-
         <div className="p-5 border-b">
-          <h1 className="text-2xl font-bold text-indigo-600">
-            Messages
-          </h1>
+          <h1 className="text-2xl font-bold text-indigo-600">Messages</h1>
           <input
             type="text"
             placeholder="Search users..."
@@ -47,12 +70,8 @@ const Body = () => {
 
               {/* User Details */}
               <div className="flex-1 min-w-0">
-                <h2 className="font-semibold text-gray-800">
-                  {user.name}
-                </h2>
-                <p className="text-sm text-gray-500 truncate">
-                  {user.message}
-                </p>
+                <h2 className="font-semibold text-gray-800">{user.name}</h2>
+                <p className="text-sm text-gray-500 truncate">{user.message}</p>
               </div>
             </NavLink>
           ))}
@@ -63,7 +82,6 @@ const Body = () => {
       <div className="flex-1 min-w-0">
         <Outlet />
       </div>
-
     </div>
   );
 };

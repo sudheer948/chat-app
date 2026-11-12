@@ -140,7 +140,10 @@ const SignUp = () => {
                 <input
                   type="text"
                   value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
+                  onChange={(e) => {
+                    setFirstName(e.target.value);
+                    setError("");
+                  }}
                   placeholder="Enter your first name"
                   className="w-full px-4 py-3.5 rounded-xl border border-slate-200 bg-slate-50 outline-none transition-all focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 focus:bg-white"
                 />
@@ -155,7 +158,10 @@ const SignUp = () => {
                 <input
                   type="text"
                   value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
+                  onChange={(e) => {
+                    setLastName(e.target.value);
+                    setError("");
+                  }}
                   placeholder="Enter your last name"
                   className="w-full px-4 py-3.5 rounded-xl border border-slate-200 bg-slate-50 outline-none transition-all focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 focus:bg-white"
                 />
@@ -170,7 +176,10 @@ const SignUp = () => {
                 <input
                   type="email"
                   value={emailId}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    setError();
+                  }}
                   placeholder="you@example.com"
                   className="w-full px-4 py-3.5 rounded-xl border border-slate-200 bg-slate-50 outline-none transition-all focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 focus:bg-white"
                 />
@@ -188,7 +197,10 @@ const SignUp = () => {
                   <input
                     type={showPassword ? "text" : "password"}
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                      setError("");
+                    }}
                     placeholder="Enter your password"
                     className="w-full px-4 py-3.5 pr-16 rounded-xl border border-slate-200 bg-slate-50 outline-none transition-all focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 focus:bg-white"
                   />
@@ -201,9 +213,10 @@ const SignUp = () => {
                     {showPassword ? "Hide" : "Show"}
                   </button>
                 </div>
+                <p className="text-sm text-red-500 h-3 p-2 pb-3 mt-2 font-semibold">
+                  {error}
+                </p>
               </div>
-
-              <p className="text-sm text-red-500 mt-2 font-semibold">{error}</p>
 
               {/* SignUp button */}
               <button

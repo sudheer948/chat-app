@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import illustration from "/assets/illustration.png";
 import { Link, useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils/constants";
@@ -8,8 +8,8 @@ import axios from "axios";
 
 const Login = () => {
   // Store email and password
-  const [emailId, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [emailId, setEmail] = useState("muhammedsudheer121@gmail.com");
+  const [password, setPassword] = useState("Sudheer1234$");
   const [error, setError] = useState("");
 
   // Control password visibility
@@ -17,6 +17,21 @@ const Login = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const fetchUser = async () => {
+    try {
+      const res = await axios.get(BASE_URL + "/profile/view", {
+        withCredentials: true,
+      });
+      navigate("/");
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
+  useEffect(() => {
+    fetchUser();
+  }, []);
 
   // Handle login form submission
   const handleLogin = async () => {
@@ -197,7 +212,10 @@ const Login = () => {
                 <input
                   type="email"
                   value={emailId}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    setError("");
+                  }}
                   placeholder="you@example.com"
                   required
                   className="w-full px-4 py-3.5 rounded-xl border border-slate-200 bg-slate-50 outline-none transition-all focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 focus:bg-white"
@@ -216,15 +234,14 @@ const Login = () => {
                   <input
                     type={showPassword ? "text" : "password"}
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                      setError("");
+                    }}
                     placeholder="Enter your password"
                     required
-                    className="w-full px-4 py-3.5 pr-16 rounded-xl border border-slate-200 bg-slate-50 outline-none transition-all focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 focus:bg-white"
+                    className="mb-2 w-full px-4 py-3.5 pr-16 rounded-xl border border-slate-200 bg-slate-50 outline-none transition-all focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 focus:bg-white"
                   />
-
-                  <p className="text-sm text-red-500 mt-2 font-semibold">
-                    {error}
-                  </p>
 
                   <button
                     type="button"
@@ -234,6 +251,10 @@ const Login = () => {
                     {showPassword ? "Hide" : "Show"}
                   </button>
                 </div>
+
+                <p className="text-sm text-red-500 h-5 p-2 font-semibold">
+                  {error}
+                </p>
               </div>
 
               {/* Login button */}
