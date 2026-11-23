@@ -111,3 +111,113 @@
     animation: none;
   }
 }
+
+@keyframes navbarEnter {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-navbar {
+  animation: navbarEnter 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-navbar {
+    animation: none;
+  }
+}
+
+
+/* Chat header */
+@keyframes chatHeaderEnter {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Incoming message */
+@keyframes messageLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Outgoing message */
+@keyframes messageRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Message input */
+@keyframes inputEnter {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-chat-header {
+  animation: chatHeaderEnter 0.6s ease-out both;
+}
+
+.animate-message-left {
+  animation: messageLeft 0.5s ease-out both;
+}
+
+.animate-message-right {
+  animation: messageRight 0.5s ease-out both;
+}
+
+.animate-input-enter {
+  animation: inputEnter 0.6s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-chat-header,
+  .animate-message-left,
+  .animate-message-right,
+  .animate-input-enter {
+    animation: none;
+  }
+}
+
+@keyframes navbarEnter {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-navbar {
+  animation: navbarEnter 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
