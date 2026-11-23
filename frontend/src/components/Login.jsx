@@ -41,7 +41,6 @@ const Login = () => {
         { emailId, password },
         { withCredentials: true },
       );
-      console.log(res.data);
       const { message, data } = res.data;
       console.log(message);
 
